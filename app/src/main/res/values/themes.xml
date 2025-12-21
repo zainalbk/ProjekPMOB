@@ -10,6 +10,11 @@
     <style name="Theme.ProyekInotekAI.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+    </style>
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 
     <style name="Theme.ProyekInotekAI.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

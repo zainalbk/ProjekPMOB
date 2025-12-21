@@ -1,46 +1,139 @@
 package com.example.proyekinotekai
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.FrameLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.proyekinotekai.databinding.ActivityMainBinding
-import com.google.android.material.progressindicator.CircularProgressIndicator
+import androidx.cardview.widget.CardView
+import androidx.lifecycle.lifecycleScope
+import com.example.proyekinotekai.data.UserRepository
+import com.example.proyekinotekai.ui.landing.LandingPage
+import com.google.android.material.card.MaterialCardView
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var repository: UserRepository
+
+    private lateinit var tvUsername: TextView
+    private lateinit var btnHome: FrameLayout
+    private lateinit var cvProfile: CardView
+
+    // Dashboard Cards
+    private lateinit var cardPakan: MaterialCardView
+    private lateinit var cardPh: MaterialCardView
+    private lateinit var cardPerangkat: MaterialCardView
+
+    // Feature & History Cards (BARU)
+    private lateinit var cardFeatureAi: MaterialCardView
+    private lateinit var cardHistoryPh: MaterialCardView
+    private lateinit var cardHistoryPakan: MaterialCardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        auth = FirebaseAuth.getInstance()
+        repository = UserRepository(this)
 
-        binding.cpiFeed.isIndeterminate = false
-        binding.cpiFeed.setProgressCompat(98, true)
+        initViews()
+        checkUserSession()
+        setupBottomNavigation()
+        setupDashboardClicks()
+    }
 
-        // Safe area
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val sb = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(sb.left, sb.top, sb.right, sb.bottom)
-            insets
+    private fun initViews() {
+        tvUsername = findViewById(R.id.tvUsername)
+        btnHome = findViewById(R.id.homeContainer)
+        cvProfile = findViewById(R.id.cvProfile)
+
+        // Grid Cards
+        cardPakan = findViewById(R.id.cardPakan)
+        cardPh = findViewById(R.id.cardPh)
+        cardPerangkat = findViewById(R.id.cardPerangkat)
+
+        // New Cards (Inisialisasi ID baru)
+        cardFeatureAi = findViewById(R.id.cardFeatureAi)
+        cardHistoryPh = findViewById(R.id.cardHistoryPh)
+        cardHistoryPakan = findViewById(R.id.cardHistoryPakan)
+    }
+
+    private fun checkUserSession() {
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            redirectToLandingPage()
+            return
         }
 
-        // Demo data
-        binding.txtWelcomeName.text = "Mustofa Abdurrahim"
-        binding.txtEnergyToday.text = "5.0 w/h"
-        binding.txtEnergyMonth.text = "0.005 kWh"
+        repository.getCustomUserId(currentUser.uid) { customId ->
+            if (customId != null) {
+                loadUserData(customId)
+                repository.listenForUserChanges(customId)
+            } else {
+                Toast.makeText(this, "Gagal sinkronisasi data pengguna.", Toast.LENGTH_SHORT).show()
+                auth.signOut()
+                redirectToLandingPage()
+            }
+        }
+    }
 
-        binding.txtLastPhValue.text = "7.3"
-        binding.txtLastFeedStatus.text = "Succes"
-        binding.txtNextFeed.text = "Next: 15:00"
+    private fun loadUserData(userId: String) {
+        lifecycleScope.launch {
+            val user = repository.getUserById(userId)
+            if (user != null) {
+                tvUsername.text = "${user.nama} Yay!"
+            } else {
+                tvUsername.text = "Guest!"
+            }
+        }
+    }
 
-        // Clicks (dummy)
-        binding.fabHome.setOnClickListener { /* TODO */ }
-        binding.btnDevice.setOnClickListener { /* TODO */ }
-        binding.btnAccount.setOnClickListener { /* TODO */ }
+    private fun setupBottomNavigation() {
+        btnHome.setOnClickListener {
+            Toast.makeText(this, "Refreshing Dashboard...", Toast.LENGTH_SHORT).show()
+        }
+
+        cvProfile.setOnClickListener {
+            auth.signOut()
+            lifecycleScope.launch {
+                repository.clearLocalUser()
+                redirectToLandingPage()
+            }
+        }
+    }
+
+    private fun redirectToLandingPage() {
+        val intent = Intent(this@MainActivity, LandingPage::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
+
+    private fun setupDashboardClicks() {
+        // Klik Grid Utama
+        cardPakan.setOnClickListener {
+            Toast.makeText(this, "Membuka Detail Pakan...", Toast.LENGTH_SHORT).show()
+        }
+        cardPh.setOnClickListener {
+            Toast.makeText(this, "Membuka Detail pH...", Toast.LENGTH_SHORT).show()
+        }
+        cardPerangkat.setOnClickListener {
+            Toast.makeText(this, "Mengelola Perangkat...", Toast.LENGTH_SHORT).show()
+        }
+
+        // Klik Fitur & History Baru
+        cardFeatureAi.setOnClickListener {
+            Toast.makeText(this, "Membuka AI Optimization...", Toast.LENGTH_SHORT).show()
+        }
+        cardHistoryPh.setOnClickListener {
+            Toast.makeText(this, "History pH diklik", Toast.LENGTH_SHORT).show()
+        }
+        cardHistoryPakan.setOnClickListener {
+            Toast.makeText(this, "History Pakan diklik", Toast.LENGTH_SHORT).show()
+        }
     }
 }

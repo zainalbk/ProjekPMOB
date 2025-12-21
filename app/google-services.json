@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "852390778830",
+    "firebase_url": "https://inotekai-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "inotekai",
+    "storage_bucket": "inotekai.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852390778830:android:f7dc1864fec21d6a563d9f",
+        "android_client_info": {
+          "package_name": "com.example.proyekinotekai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGKCGxR--TGnOvNqDvOUzgWTVqNr1zlII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
