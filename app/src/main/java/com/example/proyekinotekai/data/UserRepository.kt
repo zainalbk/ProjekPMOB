@@ -17,14 +17,13 @@ class UserRepository(context: Context) {
     private val userIdMapRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("user_id_map")
 
     fun registerUserToFirebaseAndLocal(
-        id: String, email: String, pass: String,
+        id: String, email: String, pass: String, // PERINGATAN: Password plain text tidak aman
         nama: String, telp: String, alamat: String,
         onResult: (success: Boolean, message: String) -> Unit
     ) {
         val userData = hashMapOf<String, Any>(
             "id" to id,
             "email" to email,
-            "password" to pass, // PERINGATAN: Menyimpan password dalam bentuk plain text tidak aman.
             "nama" to nama,
             "noTelp" to telp,
             "alamat" to alamat
@@ -33,6 +32,12 @@ class UserRepository(context: Context) {
         usersRef.child(id).setValue(userData)
             .addOnSuccessListener { onResult(true, "Sukses registrasi ke Firebase.") }
             .addOnFailureListener { e -> onResult(false, e.message ?: "Terjadi kesalahan.") }
+    }
+
+    fun updateUser(userId: String, newData: Map<String, Any?>, onResult: (Boolean) -> Unit) {
+        usersRef.child(userId).updateChildren(newData)
+            .addOnSuccessListener { onResult(true) }
+            .addOnFailureListener { onResult(false) }
     }
 
     suspend fun saveToLocal(userEntity: UserEntity) {
@@ -53,9 +58,6 @@ class UserRepository(context: Context) {
         }
     }
 
-    /**
-     * Mengambil Custom ID ("PeternakXXXX") dari Auth UID.
-     */
     fun getCustomUserId(authUid: String, onResult: (customId: String?) -> Unit) {
         userIdMapRef.child(authUid).get().addOnSuccessListener {
             if (it.exists()) {

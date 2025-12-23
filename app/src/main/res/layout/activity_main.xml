@@ -29,10 +29,8 @@
                 android:id="@+id/ivProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp"
-                android:src="@drawable/ic_account"
-                app:tint="@color/teal_900"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_account" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -233,17 +231,18 @@
                         android:orientation="vertical"
                         android:padding="20dp"
                         android:gravity="center">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sisa Pakan"
                             android:textColor="@color/white"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="83dp"
-                            android:layout_marginTop="-dp"
+                            android:layout_marginTop="0dp"
                             android:padding="1dp"
                             android:src="@drawable/ic_sisa_pakan" />
                         <TextView
@@ -285,7 +284,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_marginTop="12dp"
-                            android:src="@drawable/ic_pH_Air"/>
+                            android:src="@drawable/ic_ph_air"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -639,9 +638,10 @@
         </FrameLayout>
 
         <ImageView
+            android:id="@+id/ivSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_account"
+            android:src="@drawable/ic_settings"
             app:tint="@color/teal_900"
             app:layout_constraintStart_toEndOf="@+id/homeContainer"
             app:layout_constraintEnd_toEndOf="parent"

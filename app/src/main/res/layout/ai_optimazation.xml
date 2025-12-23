@@ -33,7 +33,7 @@
             android:layout_toEndOf="@id/btnBack"
             android:background="@drawable/badge_green_12"
             android:padding="12dp"
-            android:src="@drawable/ic_auto_awesome"
+            android:src="@drawable/ic_energy"
             app:tint="@android:color/white" />
 
         <TextView

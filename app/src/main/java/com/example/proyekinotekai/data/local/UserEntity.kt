@@ -10,5 +10,7 @@ data class UserEntity(
     val email: String = "",
     val nama: String = "",
     val noTelp: String = "",
-    val alamat: String = ""
+    val alamat: String = "",
+    val tanggalLahir: String? = null,
+    val profilePictureUrl: String? = null
 )

@@ -3,11 +3,13 @@ package com.example.proyekinotekai
 import android.content.Intent
 import android.os.Bundle
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.proyekinotekai.data.UserRepository
 import com.example.proyekinotekai.ui.landing.LandingPage
 import com.google.android.material.card.MaterialCardView
@@ -16,15 +18,19 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import com.example.proyekinotekai.ui.settings.SettingsActivity
+import com.example.proyekinotekai.ui.settings.EditProfileActivity
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var repository: UserRepository
 
+    private lateinit var ivSettings: ImageView
     private lateinit var tvUsername: TextView
     private lateinit var btnHome: FrameLayout
     private lateinit var cvProfile: CardView
+    private lateinit var ivProfile: ImageView // Ditambahkan untuk menampung gambar profil
 
     // Dashboard Cards
     private lateinit var cardPakan: MaterialCardView
@@ -65,7 +71,8 @@ class MainActivity : AppCompatActivity() {
         tvUsername = findViewById(R.id.tvUsername)
         btnHome = findViewById(R.id.homeContainer)
         cvProfile = findViewById(R.id.cvProfile)
-
+        ivProfile = findViewById(R.id.ivProfile) // Inisialisasi ImageView profil
+        ivSettings = findViewById(R.id.ivSettings)
         // Grid Cards
         cardPakan = findViewById(R.id.cardPakan)
         cardPh = findViewById(R.id.cardPh)
@@ -100,7 +107,15 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val user = repository.getUserById(userId)
             if (user != null) {
-                tvUsername.text = "${user.nama} Yay!"
+                tvUsername.text = "${user.nama}"
+
+                // Muat gambar profil dan crop menjadi lingkaran
+                user.profilePictureUrl?.let {
+                    if(it.isNotEmpty()){
+                        Glide.with(this@MainActivity).load(it).circleCrop().into(ivProfile)
+                    }
+                }
+
             } else {
                 tvUsername.text = "Guest!"
             }
@@ -108,16 +123,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
-        btnHome.setOnClickListener {
-            Toast.makeText(this, "Refreshing Dashboard...", Toast.LENGTH_SHORT).show()
-        }
-
         cvProfile.setOnClickListener {
-            auth.signOut()
-            lifecycleScope.launch {
-                repository.clearLocalUser()
-                redirectToLandingPage()
-            }
+            startActivity(Intent(this, EditProfileActivity::class.java))
+        }
+        ivSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+            finish()
         }
     }
 
