@@ -13,6 +13,9 @@ import com.example.proyekinotekai.ui.landing.LandingPage
 import com.google.android.material.card.MaterialCardView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +47,18 @@ class MainActivity : AppCompatActivity() {
         checkUserSession()
         setupBottomNavigation()
         setupDashboardClicks()
+
+        val dateTextView: TextView = findViewById(R.id.tvCurrentDate)
+
+        // Get the current date
+        val currentDate = Date()
+
+        // Format the date to "dd MMMM" format (e.g., "17 June"). [3, 12]
+        val dateFormat = SimpleDateFormat("dd MMMM", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+
+        // Set the formatted date to the TextView
+        dateTextView.text = " $formattedDate"
     }
 
     private fun initViews() {

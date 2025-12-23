@@ -162,23 +162,27 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:src="@drawable/ic_calendar"
-                                app:tint="@color/teal_900"/>
+                                app:tint="@color/teal_900" />
+
                             <TextView
+                                android:id="@+id/tvCurrentDate"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=" 17 June"
-                                android:textSize="12sp"
+                                android:layout_height="match_parent"
+                                android:text="tvCurrentDate"
                                 android:textColor="@color/teal_900"
-                                android:textStyle="bold"/>
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <ImageView
@@ -191,18 +195,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.0 kWh"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             android:layout_marginTop="8dp"
-                            android:textColor="@color/teal_900"/>
+                            android:text="0.0 kWh"
+                            android:textColor="@color/teal_900"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="This Month"
-                            android:textSize="12sp"
-                            android:textColor="@color/teal_700"/>
+                            android:textColor="@color/teal_700"
+                            android:textSize="12sp" />
                     </LinearLayout>
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -318,13 +324,12 @@
                             android:text="Perangkat"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
+
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="20dp"
-                            android:src="@drawable/ic_machine"
-                            app:tint="@color/white"/>
-                        <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1"/>
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/ic_machine_foreground"
+                            android:layout_weight="1"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -606,9 +611,9 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_machine"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_machine_foreground"
             app:tint="@color/teal_900"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/homeContainer"
