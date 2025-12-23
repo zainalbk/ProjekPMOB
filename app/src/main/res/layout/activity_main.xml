@@ -71,20 +71,17 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/bg_avatar_circle"
+                android:background="@drawable/ic_notifications"
                 android:backgroundTint="@color/teal_900"
                 android:padding="8dp"
-                android:src="@drawable/ic_notifications"
                 app:tint="@color/white" />
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="12dp"
-                android:background="@drawable/bg_avatar_circle"
-                android:backgroundTint="@color/teal_900"
+                android:background="@drawable/ic_add"
                 android:padding="8dp"
-                android:src="@drawable/ic_add"
                 app:tint="@color/white" />
         </LinearLayout>
 
@@ -131,15 +128,13 @@
                             android:text="Energy Usage"
                             android:textColor="@color/teal_700"
                             android:textSize="12sp"/>
+
                         <ImageView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
+                            android:src="@drawable/ic_energy"
                             android:layout_marginTop="16dp"
-                            android:src="@drawable/ic_auto_awesome"
-                            app:tint="@color/teal_500"
-                            android:background="@drawable/bg_avatar_circle"
-                            android:backgroundTint="@color/teal_100"
-                            android:padding="16dp"/>
+                            android:padding="8dp" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -185,12 +180,14 @@
                                 android:textColor="@color/teal_900"
                                 android:textStyle="bold"/>
                         </LinearLayout>
+
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_marginTop="24dp"
                             android:src="@drawable/bg_avatar_circle"
-                            app:tint="@color/pink_dot"/>
+                            app:tint="@color/pink_dot" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -236,20 +233,21 @@
                             android:text="Sisa Pakan"
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
+
                         <ImageView
                             android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="12dp"
-                            android:src="@drawable/bg_avatar_circle"
-                            android:padding="20dp"
-                            app:tint="@color/teal_200"/>
+                            android:layout_height="83dp"
+                            android:layout_marginTop="-dp"
+                            android:padding="1dp"
+                            android:src="@drawable/ic_sisa_pakan" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 %"
+                            android:textSize="17dp"
+                            android:text="98 %"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:layout_marginTop="-52dp"/>
+                            android:layout_marginTop="-54dp"/>
                         <Space android:layout_width="wrap_content" android:layout_height="30dp"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -278,19 +276,21 @@
                             android:textColor="@color/white"
                             android:textStyle="bold"/>
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_marginTop="12dp"
-                            android:src="@drawable/bg_avatar_circle"
-                            android:padding="20dp"
-                            app:tint="@color/teal_100"/>
+                            android:src="@drawable/ic_pH_Air"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:layout_marginLeft="-1dp"
+                            android:layout_marginTop="-73dp"
+                            android:text="7"
                             android:textColor="@color/teal_900"
-                            android:textStyle="bold"
-                            android:layout_marginTop="-52dp"/>
+                            android:textSize="34sp"
+                            android:textStyle="bold" />
+
                         <Space android:layout_width="wrap_content" android:layout_height="30dp"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -468,9 +468,7 @@
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:src="@drawable/ic_sparkles"
-                        android:background="@drawable/bg_avatar_circle"
-                        android:backgroundTint="#7CB342"
+                        android:background="@drawable/ic_energy"
                         android:padding="10dp"
                         app:tint="@color/white"/>
                     <LinearLayout
