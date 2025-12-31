@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.proyekinotekai"   // sesuaikan kalau package-mu beda
+    namespace = "com.example.proyekinotekai"
     compileSdk = 36
 
     defaultConfig {
@@ -39,7 +39,7 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true   // <- penting biar ActivityMainBinding kebentuk
+        viewBinding = true
     }
 }
 
