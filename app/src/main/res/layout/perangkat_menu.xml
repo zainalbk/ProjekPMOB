@@ -124,24 +124,6 @@
                     android:textColor="@color/teal_900"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/ivDeleteDevice"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_delete"
-                    app:tint="@android:color/holo_red_dark" />
-
-                <ImageView
-                    android:id="@+id/ivEditDevice"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:layout_toStartOf="@id/ivDeleteDevice"
-                    android:src="@drawable/ic_edit"
-                    app:tint="@color/teal_900" />
             </RelativeLayout>
 
             <!-- Item Perangkat (Gunakan RecyclerView untuk data dinamis) -->
@@ -155,7 +137,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:padding="12dp">
 
                     <ImageView
@@ -189,6 +171,23 @@
                             android:textColor="@color/teal_700"
                             android:textSize="12sp" />
                     </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/ivDeleteDevice"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_trash" />
+
+                    <ImageView
+                        android:id="@+id/ivEditDevice"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+
+                        android:layout_marginEnd="16dp"
+                        android:layout_toStartOf="@id/ivDeleteDevice"
+                        android:src="@drawable/ic_edit"
+                        app:tint="@color/teal_900" />
 
                     <ImageView
                         android:layout_width="24dp"
