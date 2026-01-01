@@ -53,12 +53,11 @@ class EditProfileActivity : AppCompatActivity() {
                         binding.etName.setText(user.nama)
                         binding.etEmail.setText(user.email)
                         binding.etPhone.setText(user.noTelp)
-                        binding.etAddressShort.setText(user.alamat)
+                        binding.etFullAddress.setText(user.alamat)
                         user.tanggalLahir?.let { splitDateToBoxes(it) }
 
-                        // Load gambar profil dengan Glide
                         user.profilePictureUrl?.let {
-                            Glide.with(this@EditProfileActivity).load(it).into(binding.ivProfile)
+                            Glide.with(this@EditProfileActivity).load(it).circleCrop().into(binding.ivProfile)
                         }
                     }
                 }

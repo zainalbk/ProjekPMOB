@@ -143,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         findViewById<ImageView>(R.id.btnApple).setOnClickListener {
-            Toast.makeText(this, "Login Apple diklik", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Login X diklik", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -13,11 +13,10 @@ import kotlinx.coroutines.withContext
 class UserRepository(context: Context) {
 
     private val userDao: UserDao = AppDatabase.getDatabase(context).userDao()
-    private val usersRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
-    private val userIdMapRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("user_id_map")
+    private val rootRef: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     fun registerUserToFirebaseAndLocal(
-        id: String, email: String, pass: String, // PERINGATAN: Password plain text tidak aman
+        id: String, email: String, pass: String,
         nama: String, telp: String, alamat: String,
         onResult: (success: Boolean, message: String) -> Unit
     ) {
@@ -29,15 +28,29 @@ class UserRepository(context: Context) {
             "alamat" to alamat
         )
 
-        usersRef.child(id).setValue(userData)
+        rootRef.child("users").child(id).setValue(userData)
             .addOnSuccessListener { onResult(true, "Sukses registrasi ke Firebase.") }
             .addOnFailureListener { e -> onResult(false, e.message ?: "Terjadi kesalahan.") }
     }
 
     fun updateUser(userId: String, newData: Map<String, Any?>, onResult: (Boolean) -> Unit) {
-        usersRef.child(userId).updateChildren(newData)
+        rootRef.child("users").child(userId).updateChildren(newData)
             .addOnSuccessListener { onResult(true) }
             .addOnFailureListener { onResult(false) }
+    }
+
+    /**
+     * Menghapus semua data pengguna dari Realtime Database (users dan map).
+     */
+    fun deleteUserFromDatabase(authUid: String, customId: String, onResult: (Boolean, String) -> Unit) {
+        val childUpdates = hashMapOf<String, Any?>(
+            "/users/$customId" to null,
+            "/user_id_map/$authUid" to null
+        )
+
+        rootRef.updateChildren(childUpdates)
+            .addOnSuccessListener { onResult(true, "Data pengguna berhasil dihapus dari database.") }
+            .addOnFailureListener { e -> onResult(false, e.message ?: "Gagal menghapus data.") }
     }
 
     suspend fun saveToLocal(userEntity: UserEntity) {
@@ -59,7 +72,7 @@ class UserRepository(context: Context) {
     }
 
     fun getCustomUserId(authUid: String, onResult: (customId: String?) -> Unit) {
-        userIdMapRef.child(authUid).get().addOnSuccessListener {
+        rootRef.child("user_id_map").child(authUid).get().addOnSuccessListener {
             if (it.exists()) {
                 onResult(it.getValue(String::class.java))
             } else {
@@ -71,7 +84,7 @@ class UserRepository(context: Context) {
     }
 
     fun listenForUserChanges(userId: String) {
-        usersRef.child(userId).addValueEventListener(object : ValueEventListener {
+        rootRef.child("users").child(userId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 CoroutineScope(Dispatchers.IO).launch {
                     if (snapshot.exists()) {

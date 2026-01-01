@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [UserEntity::class], version = 2) // Versi dinaikkan menjadi 2
+@Database(entities = [UserEntity::class], version = 3, exportSchema = false) // Versi dinaikkan menjadi 3
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -18,7 +18,7 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java, "inotekai.db"
                 )
-                .fallbackToDestructiveMigration() // Tambahkan ini
+                .fallbackToDestructiveMigration() // Menghancurkan dan membuat ulang database jika skema berubah
                 .build()
                 .also { INSTANCE = it }
             }
