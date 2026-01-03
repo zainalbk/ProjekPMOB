@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".MyApplication"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,15 +15,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyekInotekAI">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCjfU2UetjNGCyAGajkGX6-YiXmQ7rMYC8" />
+
         <activity
-<<<<<<< HEAD
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.ProyekInotekAI.NoActionBar" />
+            android:name=".ui.settings.AboutActivity"
+            android:exported="false" />
         <activity
-            android:name=".MainActivity"
-=======
+            android:name=".ui.settings.SupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.settings.SettingsDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.settings.EditProfileActivity"
             android:exported="false" />
         <activity
@@ -33,7 +43,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.landing.LandingPage"
->>>>>>> parent of 9580868 (KELAR SUDAH PENGATURAN KURANG IOTNYA BANGKEK)
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +50,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

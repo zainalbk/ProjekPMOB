@@ -1,11 +1,13 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
-    namespace = "com.example.proyekinotekai"   // sesuaikan kalau package-mu beda
-    compileSdk = 34
+    namespace = "com.example.proyekinotekai"
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.proyekinotekai"
@@ -37,7 +39,7 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true   // <- penting biar ActivityMainBinding kebentuk
+        viewBinding = true
     }
 }
 
@@ -50,12 +52,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-<<<<<<< HEAD
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
-    implementation(libs.androidx.navigation.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.navigation.ui.ktx)
-=======
     implementation(libs.firebase.database)
     implementation(libs.firebase.auth)
     implementation(libs.androidx.credentials)
@@ -63,9 +59,23 @@ dependencies {
     implementation(libs.googleid)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.annotation)
->>>>>>> parent of 9580868 (KELAR SUDAH PENGATURAN KURANG IOTNYA BANGKEK)
-
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
+
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    // Cloudinary & Image Loading
+    implementation("com.cloudinary:cloudinary-android:2.4.0")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+
 }

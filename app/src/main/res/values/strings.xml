@@ -1,84 +1,59 @@
 <resources>
-    <!-- ===================== App Info ===================== -->
     <string name="app_name">Proyek InotekAI</string>
-    <string name="cd_home">Beranda</string>
-
-    <!-- ===================== Header ===================== -->
     <string name="welcome_back">Welcome Back,</string>
-    <string name="user_name_placeholder">Mustofa Abdurrahim</string>
-    <string name="cd_notifications">Notifikasi</string>
-    <string name="cd_add">Tambah</string>
-
-    <!-- ===================== Energy Usage ===================== -->
+    <string name="user_name_placeholder">Nama User</string>
     <string name="energy_usage">Energy Usage</string>
     <string name="today">Today</string>
-    <string name="today_value">5.0 w/h</string>
-    <string name="this_month">This Month</string>
-    <string name="month_value">0.005 kWh</string>
+    <string name="today_value">0.0 w/h</string>
     <string name="calendar_date_example">17 June, 2025</string>
-
-    <!-- ===================== Cards (Pakan, pH, Perangkat) ===================== -->
+    <string name="this_month">This Month</string>
+    <string name="month_value">0.000 kWh</string>
     <string name="sisa_pakan">Sisa Pakan</string>
     <string name="percent_98">98 %</string>
-    <string name="ph_air">pH Air</string>
-    <string name="ph_value_7">7</string>
     <string name="perangkat">Perangkat</string>
     <string name="device_active">1 device\nAktif</string>
-    <string name="cd_device_image">Gambar perangkat</string>
-
-    <!-- ===================== Smart Features ===================== -->
+    <string name="ph_air">pH Air</string>
+    <string name="ph_value_7">7</string>
     <string name="smart_features">Smart Features</string>
 
-    <!-- Jadwal Pakan -->
-    <string name="feed_schedule">Jadwal Pakan</string>
-    <string name="feed_schedule_desc">Otomatis 2x sehari</string>
-    <string name="next_feed">Next: 15:00</string>
-    <string name="cd_clock_icon">Ikon jam</string>
-
-    <!-- pH Monitor -->
-    <string name="ph_monitor">pH Monitor</string>
-    <string name="ph_monitor_desc">Real-time setiap jam</string>
+    <string name="next_time">Next: 15:00</string>
     <string name="live">Live</string>
-
-    <!-- AI Optimization -->
-    <string name="ai_optimization">AI Optimization</string>
-    <string name="ai_optimization_desc">Smart feeding &amp; water quality</string>
-    <string name="active">Active</string>
-
-    <!-- ===================== Monitoring History ===================== -->
     <string name="monitoring_history">Monitoring History</string>
+    <string name="last_ph">pH Terahir</string>
+    <string name="last_feed">Pakan Terahir</string>
+    <string name="minutes_ago">1 menit yang lalu</string>
+    <string name="success_short">Succes</string>
 
-    <!-- pH Terakhir -->
-    <string name="last_ph">pH Terakhir</string>
-    <string name="last_ph_desc">1 menit yang lalu</string>
-    <string name="ph_value_73">7.3</string>
-
-    <!-- Pakan Terakhir -->
-    <string name="last_feed">Pakan Terakhir</string>
-    <string name="last_feed_desc">1 menit yang lalu</string>
-    <string name="feed_success">Success</string>
-
-    <!-- ===================== Bottom Navigation ===================== -->
-    <string name="cd_machine_nav">Navigasi ke perangkat</string>
-    <string name="cd_account_nav">Navigasi ke akun</string>
-
-    <!-- ===================== Aksesibilitas umum ===================== -->
-    <string name="cd_notifications_icon">Ikon notifikasi</string>
-    <string name="cd_add_icon">Ikon tambah</string>
-
+    <!-- a11y -->
+    <string name="cd_notifications">Notifications</string>
+    <string name="cd_add">Add</string>
+    <string name="cd_calendar">Calendar</string>
+    <string name="cd_device_image">Device illustration</string>
+    <string name="cd_machine_nav">Devices tab</string>
+    <string name="cd_account_nav">Account tab</string>
+    <string name="cd_home">Home</string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
-    <!-- ==== Navigation Header ==== -->
-    <string name="nav_header_desc">Header Navigation</string>
-    <string name="nav_header_title">Proyek InotekAI</string>
-    <string name="nav_header_subtitle">Hello, Mustofa</string>
-
-    <!-- ==== Drawer / Bottom Menu Items ==== -->
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-
-    <!-- ==== Menu action (MainActivity2) ==== -->
-    <string name="action_settings">Settings</string>
-
+    <!-- Other strings -->
+    <string name="cd_kembali">Tombol Kembali</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -10,13 +10,26 @@
     <style name="Theme.ProyekInotekAI.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+    </style>
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="SettingsItem" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/bg_avatar_circle</item> <!-- Anda bisa mengganti ini dengan selector -->
+        <item name="android:layout_marginBottom">8dp</item>
     </style>
 
     <style name="Theme.ProyekInotekAI.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ProyekInotekAI.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-<<<<<<< HEAD
-=======
 
     <style name="ProfileButtonStyle">
         <item name="android:layout_width">match_parent</item>
@@ -30,14 +43,16 @@
         <item name="android:elevation">2dp</item>
     </style>
 
-    <style name="EditProfileInputCard">
+    <style name="EditProfileInputCard" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">16dp</item>
         <item name="cardCornerRadius">12dp</item>
         <item name="cardElevation">4dp</item>
         <item name="cardBackgroundColor">@android:color/white</item>
-        <item name="strokeWidth">0dp</item> </style>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/teal_500</item>
+    </style>
 
     <style name="EditProfileEditText">
         <item name="android:layout_width">match_parent</item>
@@ -63,5 +78,4 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
->>>>>>> parent of 9580868 (KELAR SUDAH PENGATURAN KURANG IOTNYA BANGKEK)
 </resources>
