@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Outer ring tipis -->
+    <path
+        android:pathData="M60,6 A54,54 0 1,1 59.99,6"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"/>
+
+    <!-- Donut tebal (cyan), full 360° -->
+    <path
+        android:pathData="M60,18 A42,42 0 1,1 59.99,18"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FF5AD5DF"
+        android:strokeWidth="12"
+        android:strokeLineCap="round"/>
+
+    <!-- Potongan kecil putih di bawah (timpa cincin cyan) -->
+    <!-- Start & End dibuat di sekitar 0.50 (bawah) biar potongannya tepat di jam 6 -->
+    <path
+        android:pathData="M60,18 A42,42 0 1,1 59.99,18"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="12"
+        android:strokeLineCap="butt"
+        android:trimPathStart="0.486"
+        android:trimPathEnd="0.514"/>
+
+    <!-- Inner ring tipis -->
+    <path
+        android:pathData="M60,30 A30,30 0 1,1 59.99,30"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"/>
+</vector>
