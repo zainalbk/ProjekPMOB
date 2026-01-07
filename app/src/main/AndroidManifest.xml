@@ -12,12 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyekInotekAI">
         <activity
+<<<<<<< HEAD
             android:name=".MainActivity2"
             android:exported="false"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.ProyekInotekAI.NoActionBar" />
         <activity
             android:name=".MainActivity"
+=======
+            android:name=".ui.settings.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.landing.LandingPage"
+>>>>>>> parent of 9580868 (KELAR SUDAH PENGATURAN KURANG IOTNYA BANGKEK)
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
