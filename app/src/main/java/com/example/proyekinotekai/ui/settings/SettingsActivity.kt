@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,9 +17,7 @@ import com.example.proyekinotekai.MainActivity
 import com.example.proyekinotekai.R
 import com.example.proyekinotekai.data.UserRepository
 import com.example.proyekinotekai.databinding.ActivitySettingsBinding
-import com.example.proyekinotekai.databinding.DialogChangePasswordBinding
 import com.example.proyekinotekai.ui.landing.LandingPage
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
@@ -51,6 +51,7 @@ class SettingsActivity : AppCompatActivity() {
                         if (user != null) {
                             binding.tvUserName.text = user.nama
 
+                            // Load gambar profil dan crop menjadi lingkaran
                             user.profilePictureUrl?.let {
                                 if (it.isNotEmpty()) {
                                     Glide.with(this@SettingsActivity).load(it).circleCrop().into(binding.ivProfileAvatar)
@@ -65,8 +66,7 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btnBack.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            onBackPressedDispatcher.onBackPressed()
         }
 
         binding.icHome.setOnClickListener {
@@ -77,79 +77,15 @@ class SettingsActivity : AppCompatActivity() {
         binding.btnEditProfile.setOnClickListener { 
             startActivity(Intent(this, EditProfileActivity::class.java))
         }
-        binding.btnChangePassword.setOnClickListener { showChangePasswordDialog() }
+        binding.btnChangePassword.setOnClickListener { showToast("Masuk ke Ganti Password") }
 
-        binding.btnSettings.setOnClickListener { 
-            startActivity(Intent(this, SettingsDetailActivity::class.java))
-        }
+        binding.btnSettings.setOnClickListener { showToast("Masuk ke Halaman Pengaturan") }
 
-        binding.btnAboutUs.setOnClickListener { 
-            startActivity(Intent(this, AboutActivity::class.java))
-        }
-        binding.btnSupport.setOnClickListener { 
-            startActivity(Intent(this, SupportActivity::class.java))
-        }
+        binding.btnAboutUs.setOnClickListener { showToast("Tentang Kami") }
+        binding.btnSupport.setOnClickListener { showToast("Dukungan & Bantuan") }
 
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
-        }
-    }
-
-    private fun showChangePasswordDialog() {
-        val dialogBinding = DialogChangePasswordBinding.inflate(LayoutInflater.from(this))
-        val builder = AlertDialog.Builder(this)
-        builder.setView(dialogBinding.root)
-        val dialog = builder.create()
-
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        dialogBinding.btnSubmitChangePassword.setOnClickListener {
-            // Clear previous errors
-            dialogBinding.tilOldPassword.error = null
-            dialogBinding.tilNewPassword.error = null
-            dialogBinding.tilConfirmPassword.error = null
-
-            val oldPass = dialogBinding.etOldPassword.text.toString()
-            val newPass = dialogBinding.etNewPassword.text.toString()
-            val confirmPass = dialogBinding.etConfirmPassword.text.toString()
-
-            if (newPass.length < 6) {
-                dialogBinding.tilNewPassword.error = "Password minimal 6 karakter"
-                return@setOnClickListener
-            }
-            if (newPass != confirmPass) {
-                dialogBinding.tilConfirmPassword.error = "Password tidak cocok"
-                return@setOnClickListener
-            }
-
-            performChangePassword(oldPass, newPass, dialog, dialogBinding)
-        }
-
-        dialog.show()
-    }
-
-    private fun performChangePassword(oldPass: String, newPass: String, dialog: AlertDialog, dialogBinding: DialogChangePasswordBinding) {
-        val user = auth.currentUser
-        if (user?.email == null) {
-            Toast.makeText(this, "Gagal, sesi tidak valid.", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val credential = EmailAuthProvider.getCredential(user.email!!, oldPass)
-        user.reauthenticate(credential).addOnCompleteListener { reAuthTask ->
-            if (reAuthTask.isSuccessful) {
-                user.updatePassword(newPass).addOnCompleteListener { updateTask ->
-                    if (updateTask.isSuccessful) {
-                        dialog.dismiss()
-                        Toast.makeText(this, "Password berhasil diperbarui, silakan login kembali.", Toast.LENGTH_LONG).show()
-                        performLogout()
-                    } else {
-                        dialogBinding.tilNewPassword.error = updateTask.exception?.message ?: "Gagal memperbarui password"
-                    }
-                }
-            } else {
-                dialogBinding.tilOldPassword.error = "Password lama salah"
-            }
         }
     }
 

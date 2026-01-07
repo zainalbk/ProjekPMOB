@@ -15,20 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyekInotekAI">
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCjfU2UetjNGCyAGajkGX6-YiXmQ7rMYC8" />
-
-        <activity
-            android:name=".ui.settings.AboutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.settings.SupportActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.settings.SettingsDetailActivity"
-            android:exported="false" />
         <activity
             android:name=".ui.settings.EditProfileActivity"
             android:exported="false" />

@@ -59,8 +59,7 @@ dependencies {
     implementation(libs.googleid)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.annotation)
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")

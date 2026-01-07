@@ -12,7 +12,5 @@ data class UserEntity(
     val noTelp: String = "",
     val alamat: String = "",
     val tanggalLahir: String? = null,
-    val profilePictureUrl: String? = null,
-    val language: String? = null,
-    val timezone: String? = null // Kolom baru untuk zona waktu
+    val profilePictureUrl: String? = null
 )
