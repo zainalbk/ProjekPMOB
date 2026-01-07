@@ -1,4 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Basic Colors -->
+    <color name="black">#000000</color>
     <color name="teal_100">#D6F4F1</color>
     <color name="teal_200">#BFECEA</color>
     <color name="teal_300">#5DB8BE</color>
@@ -9,4 +12,22 @@
     <color name="pink_dot">#FF5A8A</color>
     <color name="white">#FFFFFF</color>
     <color name="Black">#000000</color>
+
+    <!-- IoT Page Colors -->
+    <color name="primary_purple">#240072</color>
+    <color name="light_cyan">#99F7FF</color>
+    <color name="teal_primary">#3E9299</color>
+    <color name="teal_dark">#346C71</color>
+    <color name="green_lime">#87BE29</color>
+    <color name="cyan_bright">#2FAACC</color>
+    <color name="blue_primary">#3771B1</color>
+    <color name="orange_alert">#F65624</color>
+    <color name="green_success">#53B257</color>
+    <color name="yellow_warning">#FFB637</color>
+    <color name="pink_accent">#FF6897</color>
+    <color name="gray_text">#6C6C6C</color>
+    <color name="green_indicator">#28D509</color>
+    <color name="red_notification">#BA0505</color>
+    <color name="teal_50">#E0F2F1</color>
+    <color name="teal_600">#00897B</color>
 </resources>

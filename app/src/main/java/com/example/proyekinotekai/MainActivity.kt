@@ -20,6 +20,7 @@ import java.util.Date
 import java.util.Locale
 import com.example.proyekinotekai.ui.settings.SettingsActivity
 import com.example.proyekinotekai.ui.settings.EditProfileActivity
+import com.example.proyekinotekai.ui.iot.DeviceListActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ivSettings: ImageView
     private lateinit var tvUsername: TextView
     private lateinit var btnHome: FrameLayout
+
+    private lateinit var btnMachine: FrameLayout  // Tombol navigasi ke IoT Device
     private lateinit var cvProfile: CardView
     private lateinit var ivProfile: ImageView // Ditambahkan untuk menampung gambar profil
 
@@ -73,6 +76,8 @@ class MainActivity : AppCompatActivity() {
         cvProfile = findViewById(R.id.cvProfile)
         ivProfile = findViewById(R.id.ivProfile) // Inisialisasi ImageView profil
         ivSettings = findViewById(R.id.ivSettings)
+
+        btnMachine = findViewById(R.id.btnMachine)
         // Grid Cards
         cardPakan = findViewById(R.id.cardPakan)
         cardPh = findViewById(R.id.cardPh)
@@ -129,6 +134,9 @@ class MainActivity : AppCompatActivity() {
         ivSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
             finish()
+        }
+        btnMachine.setOnClickListener {
+            startActivity(Intent(this, DeviceListActivity::class.java))
         }
     }
 

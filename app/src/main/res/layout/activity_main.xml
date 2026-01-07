@@ -610,15 +610,24 @@
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
+        <!-- IoT Device / Machine Icon -->
+        <FrameLayout
+            android:id="@+id/btnMachine"
             android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_machine_foreground"
-            app:tint="@color/teal_900"
+            android:layout_height="60dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/homeContainer"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_machine_foreground"
+                app:tint="@color/teal_900" />
+        </FrameLayout>
 
         <FrameLayout
             android:id="@+id/homeContainer"
