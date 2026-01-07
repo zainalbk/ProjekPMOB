@@ -21,6 +21,8 @@ import java.util.Locale
 import com.example.proyekinotekai.ui.settings.SettingsActivity
 import com.example.proyekinotekai.ui.settings.EditProfileActivity
 import com.example.proyekinotekai.ui.iot.DeviceListActivity
+import com.example.proyekinotekai.ui.iot.PhMonitoringActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,8 +41,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cardPakan: MaterialCardView
     private lateinit var cardPh: MaterialCardView
     private lateinit var cardPerangkat: MaterialCardView
-
-    // Feature & History Cards (BARU)
+    private lateinit var cardFeatureJadwal: MaterialCardView
     private lateinit var cardFeatureAi: MaterialCardView
     private lateinit var cardHistoryPh: MaterialCardView
     private lateinit var cardHistoryPakan: MaterialCardView
@@ -87,7 +88,17 @@ class MainActivity : AppCompatActivity() {
         cardFeatureAi = findViewById(R.id.cardFeatureAi)
         cardHistoryPh = findViewById(R.id.cardHistoryPh)
         cardHistoryPakan = findViewById(R.id.cardHistoryPakan)
+        cardPakan = findViewById(R.id.cardPakan)
+        cardPh = findViewById(R.id.cardPh)
+        cardPerangkat = findViewById(R.id.cardPerangkat)
+        cardFeatureJadwal = findViewById(R.id.cardFeatureJadwal) // <-- TAMBAHKAN INI
+        cardFeatureAi = findViewById(R.id.cardFeatureAi)
+        cardHistoryPh = findViewById(R.id.cardHistoryPh)
+        cardHistoryPakan = findViewById(R.id.cardHistoryPakan)
+
+
     }
+
 
     private fun checkUserSession() {
         val currentUser = auth.currentUser
@@ -152,9 +163,21 @@ class MainActivity : AppCompatActivity() {
         cardPakan.setOnClickListener {
             Toast.makeText(this, "Membuka Detail Pakan...", Toast.LENGTH_SHORT).show()
         }
-        cardPh.setOnClickListener {
-            Toast.makeText(this, "Membuka Detail pH...", Toast.LENGTH_SHORT).show()
+        cardPh.setOnClickListener {        // Membuat "Intent" atau niat untuk membuka layar baru
+            val intent = Intent(this, PhMonitoringActivity::class.java)
+
+            // Menjalankan Intent tersebut
+            startActivity(intent)
         }
+        val cardJadwal: MaterialCardView = findViewById(R.id.cardFeatureJadwal)
+        cardJadwal.setOnClickListener {
+            val intent = Intent(this, JadwalPakanActivity::class.java)
+            startActivity(intent)
+        }
+        cardFeatureAi.setOnClickListener {
+            Toast.makeText(this, "Membuka AI Optimization...", Toast.LENGTH_SHORT).show()
+        }
+
         cardPerangkat.setOnClickListener {
             Toast.makeText(this, "Mengelola Perangkat...", Toast.LENGTH_SHORT).show()
         }
