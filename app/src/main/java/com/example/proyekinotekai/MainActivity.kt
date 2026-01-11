@@ -21,8 +21,6 @@ import java.util.Locale
 import com.example.proyekinotekai.ui.settings.SettingsActivity
 import com.example.proyekinotekai.ui.settings.EditProfileActivity
 import com.example.proyekinotekai.ui.iot.DeviceListActivity
-import com.example.proyekinotekai.ui.iot.PhMonitoringActivity
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,15 +31,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvUsername: TextView
     private lateinit var btnHome: FrameLayout
 
-    private lateinit var btnMachine: FrameLayout  // Tombol navigasi ke IoT Device
+    private lateinit var btnMachine: FrameLayout
     private lateinit var cvProfile: CardView
-    private lateinit var ivProfile: ImageView // Ditambahkan untuk menampung gambar profil
-
-    // Dashboard Cards
+    private lateinit var ivProfile: ImageView
     private lateinit var cardPakan: MaterialCardView
     private lateinit var cardPh: MaterialCardView
     private lateinit var cardPerangkat: MaterialCardView
-    private lateinit var cardFeatureJadwal: MaterialCardView
     private lateinit var cardFeatureAi: MaterialCardView
     private lateinit var cardHistoryPh: MaterialCardView
     private lateinit var cardHistoryPakan: MaterialCardView
@@ -59,15 +54,11 @@ class MainActivity : AppCompatActivity() {
         setupDashboardClicks()
 
         val dateTextView: TextView = findViewById(R.id.tvCurrentDate)
-
-        // Get the current date
         val currentDate = Date()
 
-        // Format the date to "dd MMMM" format (e.g., "17 June"). [3, 12]
         val dateFormat = SimpleDateFormat("dd MMMM", Locale.getDefault())
         val formattedDate = dateFormat.format(currentDate)
 
-        // Set the formatted date to the TextView
         dateTextView.text = " $formattedDate"
     }
 
@@ -79,26 +70,14 @@ class MainActivity : AppCompatActivity() {
         ivSettings = findViewById(R.id.ivSettings)
 
         btnMachine = findViewById(R.id.btnMachine)
-        // Grid Cards
         cardPakan = findViewById(R.id.cardPakan)
         cardPh = findViewById(R.id.cardPh)
         cardPerangkat = findViewById(R.id.cardPerangkat)
 
-        // New Cards (Inisialisasi ID baru)
         cardFeatureAi = findViewById(R.id.cardFeatureAi)
         cardHistoryPh = findViewById(R.id.cardHistoryPh)
         cardHistoryPakan = findViewById(R.id.cardHistoryPakan)
-        cardPakan = findViewById(R.id.cardPakan)
-        cardPh = findViewById(R.id.cardPh)
-        cardPerangkat = findViewById(R.id.cardPerangkat)
-        cardFeatureJadwal = findViewById(R.id.cardFeatureJadwal) // <-- TAMBAHKAN INI
-        cardFeatureAi = findViewById(R.id.cardFeatureAi)
-        cardHistoryPh = findViewById(R.id.cardHistoryPh)
-        cardHistoryPakan = findViewById(R.id.cardHistoryPakan)
-
-
     }
-
 
     private fun checkUserSession() {
         val currentUser = auth.currentUser
@@ -124,8 +103,6 @@ class MainActivity : AppCompatActivity() {
             val user = repository.getUserById(userId)
             if (user != null) {
                 tvUsername.text = "${user.nama}"
-
-                // Muat gambar profil dan crop menjadi lingkaran
                 user.profilePictureUrl?.let {
                     if(it.isNotEmpty()){
                         Glide.with(this@MainActivity).load(it).circleCrop().into(ivProfile)
@@ -159,30 +136,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupDashboardClicks() {
-        // Klik Grid Utama
         cardPakan.setOnClickListener {
             Toast.makeText(this, "Membuka Detail Pakan...", Toast.LENGTH_SHORT).show()
         }
-        cardPh.setOnClickListener {        // Membuat "Intent" atau niat untuk membuka layar baru
-            val intent = Intent(this, PhMonitoringActivity::class.java)
-
-            // Menjalankan Intent tersebut
-            startActivity(intent)
+        cardPh.setOnClickListener {
+            Toast.makeText(this, "Membuka Detail pH...", Toast.LENGTH_SHORT).show()
         }
-        val cardJadwal: MaterialCardView = findViewById(R.id.cardFeatureJadwal)
-        cardJadwal.setOnClickListener {
-            val intent = Intent(this, JadwalPakanActivity::class.java)
-            startActivity(intent)
-        }
-        cardFeatureAi.setOnClickListener {
-            Toast.makeText(this, "Membuka AI Optimization...", Toast.LENGTH_SHORT).show()
-        }
-
         cardPerangkat.setOnClickListener {
             Toast.makeText(this, "Mengelola Perangkat...", Toast.LENGTH_SHORT).show()
         }
-
-        // Klik Fitur & History Baru
         cardFeatureAi.setOnClickListener {
             Toast.makeText(this, "Membuka AI Optimization...", Toast.LENGTH_SHORT).show()
         }

@@ -16,13 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyekInotekAI">
 
-        <activity
-            android:name=".ui.iot.PhMonitoringActivity"
-            android:exported="false" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCjfU2UetjNGCyAGajkGX6-YiXmQ7rMYC8" />
-
         <activity
             android:name=".ui.settings.AboutActivity"
             android:exported="false" />
@@ -45,27 +41,16 @@
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".JadwalPakanActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.landing.LandingPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:exported="false" />
         <activity
             android:name=".ui.iot.DeviceListActivity"
             android:exported="false"
@@ -75,7 +60,6 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".ui.iot.IoTDeviceDetailActivity" />
-
     </application>
 
 </manifest>

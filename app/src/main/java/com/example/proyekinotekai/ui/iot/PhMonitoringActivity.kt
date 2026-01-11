@@ -85,13 +85,13 @@ class PhMonitoringActivity : AppCompatActivity() {
                 binding.txtCondition.text = getString(R.string.ph_asam)
                 binding.txtRange.text = getString(R.string.ph_range_asam, 6.5)
                 binding.chipStatus.text = getString(R.string.ph_asam)
-                binding.chipStatus.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.orange_warning)) // Pastikan warna ini ada
+                binding.chipStatus.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.orange_alert)) // Pastikan warna ini ada
             }
             else -> { // Kondisi Basa (ph > 7.5)
                 binding.txtCondition.text = getString(R.string.ph_basa)
                 binding.txtRange.text = getString(R.string.ph_range_basa, 7.5)
                 binding.chipStatus.text = getString(R.string.ph_basa)
-                binding.chipStatus.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.blue_alkaline)) // Pastikan warna ini ada
+                binding.chipStatus.chipBackgroundColor = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.blue_primary)) // Pastikan warna ini ada
             }
         }
     }

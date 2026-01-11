@@ -43,9 +43,18 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    
+    <!-- Status pH Strings -->
+    <string name="ph_optimal">Kondisi Air Optimal</string>
+    <string name="ph_range_optimal">Rentang 6.5 - 7.5</string>
+    <string name="ph_normal">Normal</string>
+    <string name="ph_asam">Kondisi Air Terlalu Asam</string>
+    <string name="ph_range_asam">pH di bawah %1$.1f</string>
+    <string name="ph_basa">Kondisi Air Terlalu Basa</string>
+    <string name="ph_range_basa">pH di atas %1$.1f</string>
+
     <!-- Other strings -->
     <string name="cd_kembali">Tombol Kembali</string>
-    <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -54,14 +63,5 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="ph_optimal">Kondisi Optimal</string>
-    <string name="ph_range_optimal">ph range: 6.5 - 7.5</string>
-    <string name="ph_normal">Normal</string>
-    <string name="ph_asam">Asam</string>
-    <string name="ph_range_asam">ph range: &lt; %1$.1f</string>
-    <string name="ph_basa">Basa</string>
-    <string name="ph_range_basa">ph range: &gt; %1$.1f</string>
-
 </resources>
