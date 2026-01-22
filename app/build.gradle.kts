@@ -41,6 +41,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
 }
 
 dependencies {
@@ -61,11 +66,13 @@ dependencies {
     implementation(libs.androidx.annotation)
     implementation("com.google.android.material:material:1.9.0")
     implementation("com.google.android.gms:play-services-maps:18.1.0")
+    
+    // Testing Dependencies
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.6.1")
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
-
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
@@ -74,8 +81,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
-    // Cloudinary & Image Loading
     implementation("com.cloudinary:cloudinary-android:2.4.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
-
 }
